@@ -10,5 +10,9 @@
 	"repository": {
 		"type": "git",
 		"url": "http://github.com/andrewmunsell/lfx-light-manager"
+	},
+
+	"dependencies": {
+		"extend": "~1.2"
 	}
 }
