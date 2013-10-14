@@ -5,7 +5,13 @@ var extend = require("extend");
  * @type {Object}
  */
 var defaults = {
-	"leds": 25 // Default strand of LEDs has a length of 25
+	"leds": 25, // Default strand of LEDs has a length of 25
+	"connector": {
+		"name": "lfx-spi-connector",
+		"options": {
+			"device": "/dev/spidev0.0"
+		}
+	}
 }
 
 /**
@@ -18,7 +24,9 @@ function Manager(config) {
 	// Create a new buffer with a length 3 times the strand length (an R, G, B for each LED)
 	this._buffer = new Buffer(this.config.leds * 3);
 	this._animations = [];
-	this._connector = {};
+
+	var conn = require(this.config.connector.name);
+	this._connector = new conn(this.config.connector.options);
 }
 
 Manager.prototype.set = function(offset, r, g, b) {
@@ -50,7 +58,7 @@ Manager.prototype.render = function() {
 Manager.prototype.clear = function() {
 	this._animations = [];
 
-	this.connector.render(new Buffer(this.config.leds * 3));
+	this._connector.render(new Buffer(this.config.leds * 3));
 }
 
 module.exports = Manager;
