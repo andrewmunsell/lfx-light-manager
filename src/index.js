@@ -21,9 +21,8 @@ var defaults = {
 function Manager(config) {
 	this.config = extend(true, defaults, config);
 
-	// Create a new buffer with a length 3 times the strand length (an R, G, B for each LED)
-	this._buffer = new Buffer(this.config.leds * 3);
-	this._animations = [];
+	// Reset the buffer and animations
+	this.clear();
 
 	var conn = require(this.config.connector.name);
 	this._connector = new conn(this.config.connector.options);
@@ -57,8 +56,9 @@ Manager.prototype.render = function() {
  */
 Manager.prototype.clear = function() {
 	this._animations = [];
+	this._buffer = new Buffer(Array(this.config.leds * 3));
 
-	this._connector.render(new Buffer(this.config.leds * 3));
+	this._connector.render(this._buffer);
 }
 
 module.exports = Manager;
