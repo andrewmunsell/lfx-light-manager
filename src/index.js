@@ -21,11 +21,11 @@ var defaults = {
 function Manager(config) {
 	this.config = extend(true, defaults, config);
 
-	// Reset the buffer and animations
-	this.clear();
-
 	var conn = require(this.config.connector.name);
 	this._connector = new conn(this.config.connector.options);
+
+	// Reset the buffer and animations
+	this.clear();
 }
 
 Manager.prototype.set = function(offset, r, g, b) {
