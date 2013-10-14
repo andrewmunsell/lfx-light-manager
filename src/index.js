@@ -28,6 +28,13 @@ function Manager(config) {
 	this.clear();
 }
 
+/**
+ * Set a single LED to the specified color.
+ * @param {number} offset LED to set
+ * @param {number} r      Red value
+ * @param {number} g      Green value
+ * @param {number} b      Blue value
+ */
 Manager.prototype.set = function(offset, r, g, b) {
 	if(offset < 0 || offset >= this._buffer.length / 3)
 		throw new Exception("Index out of bounds for LED buffer.");
