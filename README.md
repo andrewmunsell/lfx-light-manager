@@ -131,3 +131,19 @@ The formula is defined as `f(a, b) = ab`, where `a` represents the base value an
 Applies screen blending with the given RGB value onto the specified LED. Essentially, the screen blending mode is the opposite of multiply.
 
 The formula is defined as `f(a, b) = 1 - (1 - a)(1 - b)`, where `a` represents the base value and `b` represents the value to screen. [[1]](https://en.wikipedia.org/wiki/Blend_modes#Screen)
+
+### clear
+
+**Parameters**
+
+*None*
+
+Clears the entire strand buffer and removes all animations.
+
+### blank
+
+**Parameters**
+
+*None*
+
+Blanks the entire LED strand. This method, unlike `clear`, will *not* remove any animations-- it will only clear the pixel buffer. If any animations are active, they will still render on the next cycle.
