@@ -4,7 +4,9 @@ The LFX Light Manager class is the core of [LFX](https://github.com/andrewmunsel
 
 ## Public API Reference
 
-The following methods are available for animations to use for rendering.
+These methods do not write the pixel buffer to the LED strand itself. Rather, the buffer is written only after all animations have modified the buffer and the render cycle is over. By default, the LFX Light Manager updates LEDs at 24 times per second.
+
+The following methods are available for animations to use for rendering. 
 
 ### get(Number)
 
