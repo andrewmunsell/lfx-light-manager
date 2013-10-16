@@ -103,3 +103,29 @@ Fills all LEDs with the specified RGB value.
 - `Number` - Lightness value from 0 to 255
 
 Fills all LEDs with the specified HSL value.
+
+### multiply(Number, Number, Number, Number)
+
+**Parameters**
+
+- `Number` - LED to set. 0 index based, where 0 is the LED physically closest to the controller.
+- `Number` - Red value from 0 to 255
+- `Number` - Green value from 0 to 255
+- `Number` - Blue value from 0 to 255
+
+Multiplies the given RGB value onto the specified LED.
+
+The formula is defined as `f(a, b) = ab`, where `a` represents the base value and `b` represents the value to multiply.
+
+### screen(Number, Number, Number, Number)
+
+**Parameters**
+
+- `Number` - LED to set. 0 index based, where 0 is the LED physically closest to the controller.
+- `Number` - Red value from 0 to 255
+- `Number` - Green value from 0 to 255
+- `Number` - Blue value from 0 to 255
+
+Applies screen blending with the given RGB value onto the specified LED. Essentially, the screen blending mode is the opposite of multiply.
+
+The formula is defined as `f(a, b) = 1 - (1 - a)(1 - b)`, where `a` represents the base value and `b` represents the value to screen. [[1]](https://en.wikipedia.org/wiki/Blend_modes#Screen)
