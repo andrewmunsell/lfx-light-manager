@@ -14,6 +14,7 @@ var defaults = {
 	"leds": 25, // Default strand of LEDs has a length of 25
 	"connector": {
 		"name": "lfx-spi-connector",
+		
 		"options": {
 			"device": "/dev/spidev0.0"
 		}
@@ -58,7 +59,7 @@ Manager.prototype.set = function(offset, r, g, b) {
  */
 Manager.prototype.render = function() {
 	for (var i = 0; i < this._animations.length; i++) {
-		this._animations[i].render(this._buffer);
+		this._animations[i].render();
 	}
 
 	this._connector.render(this._buffer);
