@@ -12,7 +12,15 @@ The following methods are available for animations to use for rendering.
 
 - `Number` - LED to get the color for. 0 index based, where 0 is the LED physically closest to the controller.
 
-Retrieves the RGB value of the specified LED.
+Retrieves the RGB value of the specified LED. Color is returned in an object with the specified format:
+
+```
+{
+	"r": Number,
+	"g": Number,
+	"b": Number
+}
+```
 
 ### getHSL(Number)
 
@@ -20,7 +28,15 @@ Retrieves the RGB value of the specified LED.
 
 - `Number` - LED to get the color for. 0 index based, where 0 is the LED physically closest to the controller.
 
-Retrieves the HSL value of the specified LED.
+Retrieves the HSL value of the specified LED. Color is returned in an object with the specified format:
+
+```
+{
+	"h": Number,
+	"s": Number,
+	"l": Number
+}
+```
 
 ### set(Number, Number, Number, Number)
 
