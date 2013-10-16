@@ -28,7 +28,13 @@ var defaults = {
 function Manager(config) {
 	this.config = extend(true, defaults, config);
 
-	var conn = require(this.config.connector.name);
+	var conn;
+	if(this.config.connector.name == "mock") {
+		conn = require("./mock-connector");
+	} else {
+		conn = require(this.config.connector.name);
+	}
+
 	this._connector = new conn(this.config.connector.options);
 
 	// Reset the buffer and animations
