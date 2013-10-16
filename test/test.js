@@ -41,6 +41,14 @@ describe("LFXLightManager", function(){
 				b: 255
 			}, manager.get(0));
 		});
+
+		it("should throw an exception if the offset is out of bounds.", function(){
+			var manager = new LFXLightManager(options);
+
+			assert.throws(function(){
+				manager.get(options.leds);
+			}, Error);
+		});
 	});
 
 	/**
