@@ -4,7 +4,8 @@
  * @license http://www.gnu.org/licenses/ GNU GPLv3
  */
 
-var extend = require("extend");
+var extend 	= require("extend"),
+	Color 	= require("tinycolor2");
 
 /**
  * Default options for the light manager
@@ -44,7 +45,12 @@ function Manager(config) {
 	this.render();
 }
 
-Manager.prototype.get = function(offset, r, g, b) {
+/**
+ * Retrieve the pixel RGB value at the specified offset
+ * @param  {number} offset LED to get the RGB value for
+ * @return {object}        Object containing RGB values of the specified pixel
+ */
+Manager.prototype.get = function(offset) {
 	if(offset < 0 || offset >= this._buffer.length / 3)
 		throw new Exception("Index out of bounds for LED buffer.");
 
@@ -53,6 +59,20 @@ Manager.prototype.get = function(offset, r, g, b) {
 		"g": this._buffer[offset + 1],
 		"b": this._buffer[offset + 2]
 	}
+}
+
+/**
+ * Retrieve the pixel HSL value at the specified offset
+ * @param  {number} offset LED to get the HSL value for
+ * @return {object}        Object containing HSL values of the specified pixel
+ */
+Manager.prototype.getHSL = function(offset) {
+	var c = Color(this.get(offset)).toHsl();
+
+	// Remove the extra alpha value.
+	delete c.a;
+
+	return c;
 }
 
 /**
