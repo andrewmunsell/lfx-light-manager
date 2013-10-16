@@ -39,6 +39,9 @@ function Manager(config) {
 
 	// Reset the buffer and animations
 	this.clear();
+
+	// Write the blank buffer to the strand to clear it out
+	this.render();
 }
 
 Manager.prototype.get = function(offset, r, g, b) {
@@ -69,7 +72,23 @@ Manager.prototype.set = function(offset, r, g, b) {
 	this._buffer[offset * 3] = r;
 	this._buffer[offset * 3 + 1] = g;
 	this._buffer[offset * 3 + 2] = b;
-};
+}
+
+/**
+ * Remove all animations from the manager and clear the strand.
+ */
+Manager.prototype.clear = function() {
+	this._animations = [];
+	
+	this.blank();
+}
+
+/**
+ * Blanks the LED strand by filling the pixel buffer with zeroes
+ */
+Manager.prototype.blank = function() {
+	this._buffer = new Buffer(Array(this.config.leds * 3));
+}
 
 /**
  * Render the current animations onto the LEDs.
@@ -78,16 +97,6 @@ Manager.prototype.render = function() {
 	for (var i = 0; i < this._animations.length; i++) {
 		this._animations[i].render();
 	}
-
-	this._connector.render(this._buffer);
-}
-
-/**
- * Remove all animations from the manager and clear the strand.
- */
-Manager.prototype.clear = function() {
-	this._animations = [];
-	this._buffer = new Buffer(Array(this.config.leds * 3));
 
 	this._connector.render(this._buffer);
 }
