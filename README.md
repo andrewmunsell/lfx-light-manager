@@ -66,8 +66,8 @@ Sets the specified LED to the given HSL value.
 
 **Parameters**
 
-- `Number` - Starting LED to set. Inclusive.
-- `Number` - Ending LED to set. Exclusive.
+- `Number` - Start of the range to set, inclusive.
+- `Number` - End of the range to set, exclusive.
 - `Number` - Red value from 0 to 255
 - `Number` - Green value from 0 to 255
 - `Number` - Blue value from 0 to 255
@@ -78,8 +78,8 @@ Sets the specified LEDs to the given RGB value. The range is inclusive-exclusive
 
 **Parameters**
 
-- `Number` - Starting LED to set. Inclusive.
-- `Number` - Ending LED to set. Exclusive.
+- `Number` - Start of the range to set, inclusive.
+- `Number` - End of the range to set, exclusive.
 - `Number` - Hue value from 0 to 255
 - `Number` - Saturation value from 0 to 255
 - `Number` - Lightness value from 0 to 255
