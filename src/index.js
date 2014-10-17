@@ -121,4 +121,11 @@ Manager.prototype.render = function() {
 	this._connector.render(this._buffer);
 }
 
+/**
+ * Get the size of the strand of LEDs controlled by this manager
+ */
+Manager.prototype.size = function() {
+	return this.config.leds;
+}
+
 module.exports = Manager;

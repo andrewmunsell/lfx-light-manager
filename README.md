@@ -147,3 +147,11 @@ Clears the entire strand buffer and removes all animations.
 *None*
 
 Blanks the entire LED strand. This method, unlike `clear`, will *not* remove any animations-- it will only clear the pixel buffer. If any animations are active, they will still render on the next cycle.
+
+### size
+
+**Parameters**
+
+*None*
+
+Returns the size of the LED strand controlled by this manager.
