@@ -19,8 +19,11 @@
 
 	"dependencies": {
 		"extend": "~1.2",
-		"tinycolor2": "0.9.x"
+		"tinycolor2": "0.9.x",
+
+		"lfx-spi-connector": "git://github.com/andrewmunsell/lfx-spi-connector.git#develop"
 	},
+
 	"devDependencies": {
 		"mocha": "*"
 	}
