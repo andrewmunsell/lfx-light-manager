@@ -1,17 +1,17 @@
-var extend = require("extend");
-
 /**
  * @author Andrew Munsell <andrew@wizardapps.net>
- * @copyright 2013 Andrew Munsell
+ * @copyright 2015 Andrew Munsell
  * @license http://www.gnu.org/licenses/ GNU GPLv3
  */
+
+var extend = require('extend');
 
 /**
  * Default options for the mock connector
  * @type {Object}
  */
 var defaults = {
-	"fail": false // Should the render always fail?
+	'fail': false // Should the render always fail?
 }
 
 /**
@@ -31,7 +31,7 @@ Connector.prototype.render = function(buffer) {
 	// unless the failure setting is on.
 	
 	if(this.config.fail) {
-		throw new Exception("Failed to render the LED data.");
+		throw new Exception('Failed to render the LED data.');
 	}
 }
 
