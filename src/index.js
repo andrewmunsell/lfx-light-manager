@@ -43,7 +43,7 @@ function Manager(config) {
 
 	// Write the blank buffer to the strand to clear it out
 	this.render();
-}
+};
 
 /**
  * Retrieve the pixel RGB value at the specified offset
@@ -59,7 +59,7 @@ Manager.prototype.get = function(offset) {
 		'g': this._buffer[offset + 1],
 		'b': this._buffer[offset + 2]
 	}
-}
+};
 
 /**
  * Retrieve the pixel HSL value at the specified offset
@@ -73,7 +73,7 @@ Manager.prototype.getHSL = function(offset) {
 	delete c.a;
 
 	return c;
-}
+};
 
 /**
  * Set a single LED to the specified color.
@@ -83,16 +83,18 @@ Manager.prototype.getHSL = function(offset) {
  * @param {number} b      Blue value
  */
 Manager.prototype.set = function(offset, r, g, b) {
-	if(offset < 0 || offset >= this._buffer.length / 3)
+	if(offset < 0 || offset >= this._buffer.length / 3) {
 		throw new Exception('Index out of bounds for LED buffer.');
+	}
 
-	if(r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
+	if(r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255) {
 		throw new Exception('Invalid integer to byte conversion for RGB data.');
+	}
 
 	this._buffer[offset * 3] = r;
 	this._buffer[offset * 3 + 1] = g;
 	this._buffer[offset * 3 + 2] = b;
-}
+};
 
 /**
  * Remove all animations from the manager and clear the strand.
@@ -101,14 +103,14 @@ Manager.prototype.clear = function() {
 	this._animations = [];
 	
 	this.blank();
-}
+};
 
 /**
  * Blanks the LED strand by filling the pixel buffer with zeroes
  */
 Manager.prototype.blank = function() {
 	this._buffer = new Buffer(Array(this.config.leds * 3));
-}
+};
 
 /**
  * Render the current animations onto the LEDs.
@@ -119,13 +121,13 @@ Manager.prototype.render = function() {
 	}
 
 	this._connector.render(this._buffer);
-}
+};
 
 /**
  * Get the size of the strand of LEDs controlled by this manager
  */
 Manager.prototype.size = function() {
 	return this.config.leds;
-}
+};
 
 module.exports = Manager;
