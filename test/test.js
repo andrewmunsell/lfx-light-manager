@@ -76,6 +76,9 @@ describe('LFXLightManager', function(){
 		});
 	});
 
+	/**
+	 * Test the .setEveryNth method
+	 */
 	describe('#setEveryNth(Number, Number, Number, Number, Number, Number)', function() {
 		it('should set every 0th (i.e. every one) LED to white.', function() {
 			var manager = new LFXLightManager(options);
@@ -116,6 +119,9 @@ describe('LFXLightManager', function(){
 		});
 	});
 
+	/**
+	 * Test the .fillRange method
+	 */
 	describe('#fillRange(Number, Number, Number, Number, Number)', function() {
 		it('should fill the specified range with an RGB color.', function() {
 			var manager = new LFXLightManager(options);
@@ -141,6 +147,9 @@ describe('LFXLightManager', function(){
 		});
 	});
 
+	/**
+	 * Test the .fill method
+	 */
 	describe('#fill(Number, Number, Number)', function() {
 		it('should fill the entire fixture with an RGB color.', function() {
 			var manager = new LFXLightManager(options);
