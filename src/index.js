@@ -97,6 +97,34 @@ Manager.prototype.set = function(offset, r, g, b) {
 };
 
 /**
+ * Set every Nth LED to the specified color, beginning at the specified offset and
+ * ending at the specified ending point (inclusive, inclusive).
+ * @param {number} offset Offset of the first LED to set
+ * @param {number} nth    
+ * @param {number} end    Ending bound for the LEDs to set every Nth LED
+ * @param {number} r      Red value
+ * @param {number} g      Green value
+ * @param {number} b      Blue value
+ */
+Manager.prototype.setEveryNth = function(offset, nth, end, r, g, b) {
+	if(offset < 0 || offset >= this._buffer.length / 3) {
+		throw new Exception('Offset index out of bounds for LED buffer.');
+	}
+
+	if(end < offset || end < 0 || end >= this._buffer.length / 3) {
+		throw new Exception('End index out of bounds for LED buffer.');
+	}
+
+	if(r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255) {
+		throw new Exception('Invalid integer to byte conversion for RGB data.');
+	}
+
+	for (var i = offset; i < offset + end; i += (nth + 1)) {
+		this.set(i, r, g, b);
+	};
+};
+
+/**
  * Remove all animations from the manager and clear the strand.
  */
 Manager.prototype.clear = function() {

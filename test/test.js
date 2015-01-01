@@ -69,4 +69,44 @@ describe('LFXLightManager', function(){
 			}, manager.getHSL(0));
 		});
 	});
+
+	describe('#setEveryNth(Number, Number, Number, Number, Number, Number)', function() {
+		it('should set every 0th (i.e. every one) LED to white.', function() {
+			var manager = new LFXLightManager(options);
+
+			// Set every 0th LED to white
+			manager.setEveryNth(0, 0, manager.config.leds - 1, 255, 255, 255);
+
+			for (var i = 0; i < manager.config.leds.length; i++) {
+				assert.deepEqual({
+					r: 255,
+					g: 255,
+					b: 255
+				}, manager.get(i));
+			};
+		});
+
+		it('should set every 1st (i.e. every other) LED to white.', function() {
+			var manager = new LFXLightManager(options);
+
+			// Set every 0th LED to white
+			manager.setEveryNth(0, 1, manager.config.leds - 1, 255, 255, 255);
+
+			for (var i = 0; i < manager.config.leds.length; i++) {
+				if(i % 2 == 0) {
+					assert.deepEqual({
+						r: 255,
+						g: 255,
+						b: 255
+					}, manager.get(i));
+				} else {
+					assert.deepEqual({
+						r: 0,
+						g: 0,
+						b: 0
+					}, manager.get(i));
+				}
+			};
+		});
+	});
 });
