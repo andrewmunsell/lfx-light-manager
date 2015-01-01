@@ -1,3 +1,9 @@
+/**
+ * @author Andrew Munsell <andrew@wizardapps.net>
+ * @copyright 2015 Andrew Munsell
+ * @license http://www.gnu.org/licenses/ GNU GPLv3
+ */
+
 var assert 			= require('assert'),
 	LFXLightManager	= require('../src');
 /**
