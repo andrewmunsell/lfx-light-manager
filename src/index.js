@@ -4,20 +4,20 @@
  * @license http://www.gnu.org/licenses/ GNU GPLv3
  */
 
-var extend 	= require("extend"),
-	Color 	= require("tinycolor2");
+var extend 	= require('extend'),
+	Color 	= require('tinycolor2');
 
 /**
  * Default options for the light manager
  * @type {Object}
  */
 var defaults = {
-	"leds": 25, // Default strand of LEDs has a length of 25
-	"connector": {
-		"name": "lfx-spi-connector",
+	'leds': 25, // Default strand of LEDs has a length of 25
+	'connector': {
+		'name': 'lfx-spi-connector',
 		
-		"options": {
-			"device": "/dev/spidev0.0"
+		'options': {
+			'device': '/dev/spidev0.0'
 		}
 	}
 }
@@ -30,8 +30,8 @@ function Manager(config) {
 	this.config = extend(true, defaults, config);
 
 	var conn;
-	if(this.config.connector.name == "mock") {
-		conn = require("./mock-connector");
+	if(this.config.connector.name == 'mock') {
+		conn = require('./mock-connector');
 	} else {
 		conn = require(this.config.connector.name);
 	}
@@ -52,12 +52,12 @@ function Manager(config) {
  */
 Manager.prototype.get = function(offset) {
 	if(offset < 0 || offset >= this._buffer.length / 3)
-		throw new Exception("Index out of bounds for LED buffer.");
+		throw new Exception('Index out of bounds for LED buffer.');
 
 	return {
-		"r": this._buffer[offset],
-		"g": this._buffer[offset + 1],
-		"b": this._buffer[offset + 2]
+		'r': this._buffer[offset],
+		'g': this._buffer[offset + 1],
+		'b': this._buffer[offset + 2]
 	}
 }
 
@@ -84,10 +84,10 @@ Manager.prototype.getHSL = function(offset) {
  */
 Manager.prototype.set = function(offset, r, g, b) {
 	if(offset < 0 || offset >= this._buffer.length / 3)
-		throw new Exception("Index out of bounds for LED buffer.");
+		throw new Exception('Index out of bounds for LED buffer.');
 
 	if(r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
-		throw new Exception("Invalid integer to byte conversion for RGB data.");
+		throw new Exception('Invalid integer to byte conversion for RGB data.');
 
 	this._buffer[offset * 3] = r;
 	this._buffer[offset * 3 + 1] = g;
