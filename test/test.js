@@ -1,23 +1,23 @@
-var assert 			= require("assert"),
-	LFXLightManager	= require("../src");
+var assert 			= require('assert'),
+	LFXLightManager	= require('../src');
 /**
  * Options to test the LFXLightManager with.
  * @type {Object}
  */
 var options = {
-	"leds": 100,
+	'leds': 100,
 
-	"connector": {
-		"name": "mock"
+	'connector': {
+		'name': 'mock'
 	}
 }
 
-describe("LFXLightManager", function(){
+describe('LFXLightManager', function(){
 	/**
 	 * Test the constructor
 	 */
-	describe("#__constructor", function(){
-		it("should properly set the configuration based on passed in options.", function(){
+	describe('#__constructor', function(){
+		it('should properly set the configuration based on passed in options.', function(){
 			var manager = new LFXLightManager(options);
 
 			assert.equal(options.leds, manager.config.leds);
@@ -27,8 +27,8 @@ describe("LFXLightManager", function(){
 	/**
 	 * Test the .get method
 	 */
-	describe("#get(Number)", function(){
-		it("should return an object containing RGB values.", function(){
+	describe('#get(Number)', function(){
+		it('should return an object containing RGB values.', function(){
 			var manager = new LFXLightManager(options);
 
 			// Set the first LED to be white
@@ -42,7 +42,7 @@ describe("LFXLightManager", function(){
 			}, manager.get(0));
 		});
 
-		it("should throw an exception if the offset is out of bounds.", function(){
+		it('should throw an exception if the offset is out of bounds.', function(){
 			var manager = new LFXLightManager(options);
 
 			assert.throws(function(){
@@ -54,8 +54,8 @@ describe("LFXLightManager", function(){
 	/**
 	 * Test the .getHSL method
 	 */
-	describe("#getHSL(Number)", function(){
-		it("should return an object containing HSL values.", function(){
+	describe('#getHSL(Number)', function(){
+		it('should return an object containing HSL values.', function(){
 			var manager = new LFXLightManager(options);
 
 			// Set the first LED to be white
