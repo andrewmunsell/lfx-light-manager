@@ -125,6 +125,29 @@ Manager.prototype.setEveryNth = function(offset, nth, end, r, g, b) {
 };
 
 /**
+ * Set the range of LEDs from the offset to the end index with the specified color. The
+ * range is inclusive, exclusive.
+ * @param  {number} offset Offset of the first LED to set
+ * @param  {number} end    Ending bound for the range fill
+ * @param  {number} r      Red value
+ * @param  {number} g      Green value
+ * @param  {number} b      Blue value
+ */
+Manager.prototype.fillRange = function(offset, end, r, g, b) {
+	this.setEveryNth(offset, 0, end, r, g, b);
+};
+
+/**
+ * Fill the entire fixture with the specified RGB color
+ * @param  {number} r Red value
+ * @param  {number} g Green value
+ * @param  {number} b Blue value
+ */
+Manager.prototype.fill = function(r, g, b) {
+	this.fillRange(0, this.config.leds, r, g, b);
+};
+
+/**
  * Remove all animations from the manager and clear the strand.
  */
 Manager.prototype.clear = function() {

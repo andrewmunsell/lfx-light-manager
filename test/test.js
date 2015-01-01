@@ -109,4 +109,46 @@ describe('LFXLightManager', function(){
 			};
 		});
 	});
+
+	describe('#fillRange(Number, Number, Number, Number, Number)', function() {
+		it('should fill the specified range with an RGB color.', function() {
+			var manager = new LFXLightManager(options);
+
+			// Fill the range of LEDs 0-4 with white
+			manager.fillRange(0, 5, 255, 255, 255);
+
+			for (var i = 0; i < manager.config.leds.length; i++) {
+				if(i < 5) {
+					assert.deepEqual({
+						r: 255,
+						g: 255,
+						b: 255
+					}, manager.get(i));
+				} else {
+					assert.deepEqual({
+						r: 0,
+						g: 0,
+						b: 0
+					}, manager.get(i));
+				}
+			};
+		});
+	});
+
+	describe('#fill(Number, Number, Number)', function() {
+		it('should fill the entire fixture with an RGB color.', function() {
+			var manager = new LFXLightManager(options);
+
+			// Fill the range of LEDs 0-4 with white
+			manager.fillRange(0, manager.config.leds.length, 255, 255, 255);
+
+			for (var i = 0; i < manager.config.leds.length; i++) {
+				assert.deepEqual({
+					r: 255,
+					g: 255,
+					b: 255
+				}, manager.get(i));
+			};
+		});
+	});
 });
