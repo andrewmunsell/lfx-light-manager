@@ -98,7 +98,7 @@ Manager.prototype.set = function(offset, r, g, b) {
 
 /**
  * Set every Nth LED to the specified color, beginning at the specified offset and
- * ending at the specified ending point (inclusive, inclusive).
+ * ending at the specified ending point (inclusive, exclusive).
  * @param {number} offset Offset of the first LED to set
  * @param {number} nth    
  * @param {number} end    Ending bound for the LEDs to set every Nth LED
@@ -111,7 +111,7 @@ Manager.prototype.setEveryNth = function(offset, nth, end, r, g, b) {
 		throw new Exception('Offset index out of bounds for LED buffer.');
 	}
 
-	if(end < offset || end < 0 || end >= this._buffer.length / 3) {
+	if(end < offset || end < 0 || end > this._buffer.length / 3) {
 		throw new Exception('End index out of bounds for LED buffer.');
 	}
 

@@ -75,7 +75,7 @@ describe('LFXLightManager', function(){
 			var manager = new LFXLightManager(options);
 
 			// Set every 0th LED to white
-			manager.setEveryNth(0, 0, manager.config.leds - 1, 255, 255, 255);
+			manager.setEveryNth(0, 0, manager.config.leds, 255, 255, 255);
 
 			for (var i = 0; i < manager.config.leds.length; i++) {
 				assert.deepEqual({
@@ -90,7 +90,7 @@ describe('LFXLightManager', function(){
 			var manager = new LFXLightManager(options);
 
 			// Set every 0th LED to white
-			manager.setEveryNth(0, 1, manager.config.leds - 1, 255, 255, 255);
+			manager.setEveryNth(0, 1, manager.config.leds, 255, 255, 255);
 
 			for (var i = 0; i < manager.config.leds.length; i++) {
 				if(i % 2 == 0) {
