@@ -20,8 +20,10 @@
 	"dependencies": {
 		"extend": "~1.2",
 		"randomstring": "1.0.3",
-		"tinycolor2": "0.9.x",
+		"tinycolor2": "0.9.x"
+	},
 
+	"optionalDependencies": {
 		"lfx-spi-connector": "git://github.com/andrewmunsell/lfx-spi-connector.git#develop"
 	},
 
