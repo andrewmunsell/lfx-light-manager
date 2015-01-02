@@ -4,8 +4,9 @@
  * @license http://www.gnu.org/licenses/ GNU GPLv3
  */
 
-var extend 	= require('extend'),
-	Color 	= require('tinycolor2');
+var extend 			= require('extend'),
+	randomstring 	= require('randomstring'),
+	Color 			= require('tinycolor2');
 
 /**
  * Default options for the light manager
@@ -37,6 +38,12 @@ function Manager(config) {
 	}
 
 	this._connector = new conn(this.config.connector.options);
+
+	// Set the ID of the manager to something unique
+	this.id = randomstring.generate(8);
+
+	// Set the tags to empty
+	this.tags = [];
 
 	// Reset the buffer and animations
 	this.clear();

@@ -28,6 +28,12 @@ describe('LFXLightManager', function(){
 
 			assert.equal(options.leds, manager.config.leds);
 		});
+
+		it('should have a properly generated ID with a length of 8.', function() {
+			var manager = new LFXLightManager(options);
+
+			assert(manager.id.match(/^[a-z\d]{8}$/i) != null);
+		});
 	});
 
 	/**
